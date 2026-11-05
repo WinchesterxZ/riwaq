@@ -1,0 +1,80 @@
+[
+  {
+    "file": "00-cover.jpg",
+    "width": 1600,
+    "height": 800,
+    "format": "JPEG"
+  },
+  {
+    "file": "00-social-cover.jpg",
+    "width": 1280,
+    "height": 640,
+    "format": "JPEG"
+  },
+  {
+    "file": "01-dashboard-ar.jpg",
+    "width": 1589,
+    "height": 1002,
+    "format": "JPEG"
+  },
+  {
+    "file": "02-dashboard-en.jpg",
+    "width": 1589,
+    "height": 1017,
+    "format": "JPEG"
+  },
+  {
+    "file": "03-dashboard-dark.jpg",
+    "width": 1600,
+    "height": 1017,
+    "format": "JPEG"
+  },
+  {
+    "file": "04-sales-invoices.jpg",
+    "width": 1590,
+    "height": 994,
+    "format": "JPEG"
+  },
+  {
+    "file": "05-inventory-balances.jpg",
+    "width": 1590,
+    "height": 994,
+    "format": "JPEG"
+  },
+  {
+    "file": "06-purchase-orders.jpg",
+    "width": 1590,
+    "height": 994,
+    "format": "JPEG"
+  },
+  {
+    "file": "07-product-catalog.jpg",
+    "width": 1590,
+    "height": 994,
+    "format": "JPEG"
+  },
+  {
+    "file": "08-profit-loss.jpg",
+    "width": 1600,
+    "height": 1000,
+    "format": "JPEG"
+  },
+  {
+    "file": "09-invoice-detail.jpg",
+    "width": 1600,
+    "height": 1000,
+    "format": "JPEG"
+  },
+  {
+    "file": "10-login.jpg",
+    "width": 1600,
+    "height": 1000,
+    "format": "JPEG"
+  },
+  {
+    "file": "11-mobile.jpg",
+    "width": 380,
+    "height": 1594,
+    "format": "JPEG"
+  }
+]

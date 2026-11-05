@@ -1,0 +1,77 @@
+{
+  "dependencies": {
+    "@atlas-erp/contracts": "workspace:*",
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/platform-express": "^11.1.0",
+    "@nestjs/swagger": "^11.2.0",
+    "@nestjs/throttler": "^6.4.0",
+    "@prisma/client": "6.19.3",
+    "arabic-persian-reshaper": "^1.0.1",
+    "argon2": "^0.44.0",
+    "bidi-js": "^1.1.0",
+    "cookie-parser": "^1.4.7",
+    "csv-parse": "^7.0.3",
+    "decimal.js": "^10.6.0",
+    "helmet": "^8.1.0",
+    "multer": "^2.5.0",
+    "otplib": "^12.0.1",
+    "pdfkit": "^0.20.2",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.25.3"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/testing": "^11.1.0",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^22.13.0",
+    "@types/pdfkit": "^0.17.7",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "pdf-parse": "1.1.1",
+    "prisma": "^6.5.0",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.6",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.3"
+  },
+  "jest": {
+    "maxWorkers": 2,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testEnvironment": "node",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.json"
+        }
+      ]
+    }
+  },
+  "name": "@atlas-erp/api",
+  "scripts": {
+    "prebuild": "node scripts/ensure-prisma-client.cjs",
+    "build": "nest build && node -e \"require('node:fs').cpSync('assets', 'dist/assets', { recursive: true })\"",
+    "db:migrate": "prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev --name init",
+    "db:seed": "tsx prisma/seed.ts",
+    "predev": "node scripts/ensure-prisma-client.cjs",
+    "dev": "nest start --watch",
+    "start": "node dist/main.js",
+    "test:e2e": "jest --config test/jest-e2e.json --runInBand",
+    "test:unit": "jest"
+  },
+  "version": "0.2.0"
+}

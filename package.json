@@ -1,0 +1,1 @@
+{"name":"atlas-erp","packageManager":"pnpm@12.16.1","private":true,"scripts":{"build":"pnpm -r build","db:migrate":"pnpm --filter @atlas-erp/api db:migrate","db:seed":"pnpm --filter @atlas-erp/api db:seed","dev:api":"pnpm --filter @atlas-erp/api dev","dev:web":"pnpm --filter @atlas-erp/web dev","test":"pnpm -r test"},"version":"0.2.0"}

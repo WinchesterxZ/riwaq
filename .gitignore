@@ -1,0 +1,47 @@
+node_modules/
+.local/
+dist/
+build/
+.env
+.env.local
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.dump
+*.sql.gz
+*.db
+*.sqlite
+*.sqlite3
+*.log
+.DS_Store
+coverage/
+playwright-report/
+test-results/
+apps/web/.vite/
+
+*.tsbuildinfo
+apps/api/src/generated/
+storage/
+target/
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+backups/*.dump
+
+# Local review exports and machine-specific state
+.publish-audit/
+
+# Platform-specific recovery binaries are installed by Prisma on a normal checkout.
+vendor/prisma-engines/
+
+# Internal project documents and review evidence stay local.
+**/*.md
+!/README.md
+/docs/*
+!/docs/showcase/
+/docs/showcase/*
+!/docs/showcase/*.jpg
+!/docs/showcase/manifest.json

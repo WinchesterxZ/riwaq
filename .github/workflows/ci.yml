@@ -1,0 +1,72 @@
+name: CI
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: atlas
+          POSTGRES_PASSWORD: atlas_dev_pw
+          POSTGRES_DB: atlas_erp_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://atlas:atlas_dev_pw@localhost:5432/atlas_erp_test
+      TEST_DATABASE_URL: postgresql://atlas:atlas_dev_pw@localhost:5432/atlas_erp_test
+      PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare local test configuration
+        run: cp .env.example apps/api/.env
+
+      - name: Build shared packages
+        run: |
+          pnpm --filter @atlas-erp/contracts build
+          pnpm --filter @atlas-erp/api-client build
+
+      - name: Generate Prisma client
+        run: pnpm --filter @atlas-erp/api exec prisma generate
+        working-directory: apps/api
+
+      - name: Run database migrations (test DB)
+        run: pnpm --filter @atlas-erp/api exec prisma migrate deploy
+        working-directory: apps/api
+
+      - name: Unit tests
+        run: pnpm --filter @atlas-erp/api exec jest --maxWorkers=2
+        working-directory: apps/api
+
+      - name: E2E tests
+        run: pnpm --filter @atlas-erp/api exec jest --config test/jest-e2e.json --runInBand
+        working-directory: apps/api
+
+      - name: Web production build
+        run: pnpm --filter @atlas-erp/web build
+        working-directory: apps/web
